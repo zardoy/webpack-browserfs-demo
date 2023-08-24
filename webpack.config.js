@@ -17,12 +17,12 @@ const config = {
   },
   resolve: {
     alias: {
-      'fs': 'browserfs/dist/shims/fs.js',
-      'buffer': 'browserfs/dist/shims/buffer.js',
-      'path': 'browserfs/dist/shims/path.js',
-      'processGlobal': 'browserfs/dist/shims/process.js',
-      'bufferGlobal': 'browserfs/dist/shims/bufferGlobal.js',
-      'bfsGlobal': require.resolve('browserfs'),
+      'browserfs$': 'browserfs/dist/browserfs.mjs',
+      'bfsGlobal': 'browserfs',
+      'fs': require.resolve('./shims/fs.js'),
+      'path': require.resolve('./shims/path.js'),
+      'processGlobal': require.resolve('./shims/process.js'),
+      'bufferGlobal': require.resolve('./shims/bufferGlobal.js'),
 
       // these below were taken from huge webpack config (project uses server in browser)
       express: false,
@@ -44,7 +44,10 @@ const config = {
       timers: require.resolve('timers-browserify'),
       child_process: false,
       tls: false,
-    }
+    },
+    exportsFields: [
+      'ignore'
+    ],
   },
   plugins: [
     new webpack.ProvidePlugin({ BrowserFS: 'bfsGlobal', process: 'processGlobal', Buffer: 'bufferGlobal' }),
