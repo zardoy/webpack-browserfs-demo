@@ -4,6 +4,7 @@
 global = globalThis
 const browserfs = require('browserfs')
 const { promisify } = require('util')
+const bplistParser = require('bplist-parser')
 
 const fs = require('fs')
 
@@ -11,14 +12,12 @@ browserfs.install(window)
 
 // todo migrate from input to showdirectorypicker + FileSystemAccess
 browserfs.configure({
-  fs: 'LocalStorage',
+  fs: 'InMemory',
   options: {
   },
 }, (e) => {
   if (e) throw e
 })
-
-const {readFile} = require('./externalLib')
 
 //@ts-ignore
 fs.promises = new Proxy(Object.fromEntries(['readFile', 'writeFile', 'stat', 'mkdir'].map(key => [key, promisify(fs[key])])), {
@@ -60,6 +59,7 @@ input.onchange = async (e) => {
   const path = '/test'
   await fs.promises.writeFile(path, Buffer.from(await file.arrayBuffer()))
 
-  const data = await readFile(path)
+  // example is unrealistic, but it's just to show that it works (we could use parseBuffer instead)
+  const data = await bplistParser.parseFile(path)
   console.log(data)
 }
