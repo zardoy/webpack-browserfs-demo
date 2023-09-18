@@ -12,8 +12,8 @@ dependencies:
     specifier: ^0.3.2
     version: 0.3.2
   browserfs:
-    specifier: file:../browserfs-latest
-    version: file:../browserfs-latest
+    specifier: github:zardoy/browserfs#build
+    version: github.com/zardoy/browserfs/0ff5df5c4e67f54b5f032b87dc650e8b78626bc7
   compression:
     specifier: ^1.7.4
     version: 1.7.4
@@ -32,6 +32,9 @@ dependencies:
   plist:
     specifier: ^3.1.0
     version: 3.1.0
+  process:
+    specifier: ^0.11.10
+    version: 0.11.10
   querystring:
     specifier: ^0.2.1
     version: 0.2.1
@@ -5179,6 +5182,11 @@ packages:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
     dev: true
 
+  /process@0.11.10:
+    resolution: {integrity: sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==}
+    engines: {node: '>= 0.6.0'}
+    dev: false
+
   /proxy-addr@2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
     engines: {node: '>= 0.10'}
@@ -6926,11 +6934,10 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  file:../browserfs-latest:
-    resolution: {directory: ../browserfs-latest, type: directory}
+  github.com/zardoy/browserfs/0ff5df5c4e67f54b5f032b87dc650e8b78626bc7:
+    resolution: {tarball: https://codeload.github.com/zardoy/browserfs/tar.gz/0ff5df5c4e67f54b5f032b87dc650e8b78626bc7}
     name: browserfs
-    engines: {node: '>= 0.10'}
-    hasBin: true
+    version: 2.0.0-zardoy
     dependencies:
       async: 2.6.4
     dev: false

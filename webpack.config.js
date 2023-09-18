@@ -9,7 +9,7 @@ const config = {
   entry: path.resolve(__dirname, './index.js'),
   devtool: 'inline-source-map',
   output: {
-    path: path.resolve(__dirname, './public'),
+    path: path.resolve(__dirname, './dist'),
     filename: './[name].js',
     publicPath: './',
     hotUpdateChunkFilename: 'hot/hot-update.[name].js',
@@ -19,10 +19,10 @@ const config = {
     alias: {
       'browserfs$': 'browserfs/dist/browserfs.mjs',
       'bfsGlobal': 'browserfs',
-      'fs': require.resolve('./shims/fs.js'),
-      'path': require.resolve('./shims/path.js'),
-      'processGlobal': require.resolve('./shims/process.js'),
-      'bufferGlobal': require.resolve('./shims/bufferGlobal.js'),
+      'fs': require.resolve('browserfs/shims/fs.js'),
+      'path': require.resolve('browserfs/shims/path.js'),
+      'processGlobal': require.resolve('browserfs/shims/process.js'),
+      'bufferGlobal': require.resolve('browserfs/shims/bufferGlobal.js'),
 
       // these below were taken from huge webpack config (project uses server in browser)
       express: false,
@@ -47,6 +47,9 @@ const config = {
     },
     exportsFields: [
       'ignore'
+    ],
+    extensions: [
+      '.js',
     ],
   },
   plugins: [
